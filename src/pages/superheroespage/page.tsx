@@ -19,7 +19,7 @@ const SuperHeroes = () => {
     <>
       <h2> Super heroes Page</h2>
       {data.map((hero)=> {
-        return <div>{hero.name}</div>
+        return <div key={hero.name}>{hero.name}</div>
       })}
     </>
   )
