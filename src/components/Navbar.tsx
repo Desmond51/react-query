@@ -15,6 +15,7 @@ const Navbar = () => {
                
  
                 <Link href="/rqsuperheroespage/page" className="flex gap-2 flex-center">RQ Super Heroes Page</Link>
+                <Link href="/testpage/page" className='flex gap-2 flex-center'>Testing</Link>
               </div>
     </div>
   )

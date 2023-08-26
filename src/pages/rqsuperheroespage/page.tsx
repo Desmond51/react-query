@@ -7,11 +7,21 @@ const fetchSuperHeroes = ()=>{
   return axios.get('http://localhost:4000/superheroes');
 }
 export default function RQSuperHeroes() {
+
+  const onSuccess= (data:[])=>{
+    console.log("Perform side effect after fetching data")
+  }
+  const onError = ()=>{
+    console.log("Perform side effect after  encountering error")
+  }
+
   const {isLoading, data, isError, error, isFetching, refetch
   }:any = useQuery(['super-heroes'], fetchSuperHeroes,
   
   {
-    enabled: false
+    onSuccess,
+    onError
+
   })
   console.log({error, isFetching})
   if(isLoading){
@@ -23,7 +33,7 @@ export default function RQSuperHeroes() {
   return (
     <>
     <h1>RQ Super Heroes Page</h1>
-    <button onClick={refetch}>Fetch Data</button>
+    <button className='bg-blue-600 p-3 rounded-lg' onClick={refetch}>Fetch Data</button>
     {data?.data.map((hero:any) =>{
         return <div key={hero.name}>{hero.name}</div>
       })
